@@ -34,7 +34,4 @@ let answer = '';
       text-align: center;
       margin: 20px auto;
   }
-  .income-entry {
-      width: 50%;
-  }
 </style>
