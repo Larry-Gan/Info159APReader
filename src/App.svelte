@@ -3,11 +3,13 @@
 
   let fileTitle = "";
   let fileText = "";
+  let fileURL = "";
   let fileNumber = 0;
 
   function loadText() {
       fileTitle = articles[fileNumber.toString()]["Title"];
       fileText = articles[fileNumber.toString()]["Text"];
+      fileURL = articles[fileNumber.toString()]["URL"];
       return fileNumber;
   }
   function inc() {
@@ -39,7 +41,8 @@ let answer = '';
   <button on:click={inc}>Next Entry</button>
 </div> 
 <div class="text">
-  <p>{fileTitle}</p>
+  <p><a href={fileURL}>{fileURL}</a></p>
+  <h1>{fileTitle}</h1>
   <p>{fileText}</p>
 </div>
 
