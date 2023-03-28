@@ -3,14 +3,26 @@
 
   let fileTitle = "";
   let fileText = "";
-  let fileNumber = "0";
+  let fileNumber = 0;
 
   function loadText() {
-      fileTitle = articles[fileNumber]["Title"];
-      fileText = articles[fileNumber]["Text"];
+      fileTitle = articles[fileNumber.toString()]["Title"];
+      fileText = articles[fileNumber.toString()]["Text"];
       return fileNumber;
-}
-  
+  }
+  function inc() {
+    if (fileNumber < 499) {
+      fileNumber += 1;
+    }
+    loadText();
+  }
+  function dec() {
+    if (fileNumber > 0) {
+      fileNumber -= 1;
+    }
+    loadText();
+  }
+  loadText();
   
 
 let answer = '';
@@ -21,17 +33,24 @@ let answer = '';
 <div class="index">
   <form on:submit|preventDefault={() => fileNumber = loadText()}>
       <label for="fname">Index of article:</label>
-      <input type="text" class = "income-entry" bind:value={fileNumber} on:input={loadText}><br><br>
-    </form>
+      <input type="number" class = "income-entry" bind:value={fileNumber} on:input={loadText}><br><br>
+  </form>
+  <button on:click={dec}>Previous Entry</button>
+  <button on:click={inc}>Next Entry</button>
 </div> 
+<div class="text">
+  <p>{fileTitle}</p>
+  <p>{fileText}</p>
+</div>
 
-<p>{fileTitle}</p>
-<p>{fileText}</p>
 
 
 <style>
   .index {
       text-align: center;
       margin: 20px auto;
+  }
+  .text {
+      white-space: pre-line;
   }
 </style>
