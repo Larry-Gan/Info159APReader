@@ -45,7 +45,10 @@ let answer = '';
   <h1>{fileTitle}</h1>
   <p>{fileText}</p>
 </div>
-
+<div class="index">
+  <button on:click={dec}>Previous Entry</button>
+  <button on:click={inc}>Next Entry</button>
+</div>
 
 
 <style>
