@@ -6,6 +6,15 @@
   let fileURL = "";
   let fileNumber = 0;
 
+  function handleKeydown({ keyCode }) {
+    if (keyCode !== 37 && keyCode !== 39) return;
+    if (keyCode === 37) {
+      dec();
+    } else {
+      inc();
+    }
+  }
+
   function loadText() {
       fileTitle = articles[fileNumber.toString()]["Title"];
       fileText = articles[fileNumber.toString()]["Text"];
@@ -31,7 +40,7 @@ let answer = '';
   
 
 </script>
-
+<svelte:window on:keydown={handleKeydown} />
 <div class="index">
   <form on:submit|preventDefault={() => fileNumber = loadText()}>
       <label for="fname">Index of article:</label>
